@@ -1,0 +1,36 @@
+version: '3'
+services:
+
+  postgresql:
+    image: docker.io/bitnami/postgresql:15
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+      - POSTGRESQL_USERNAME=bn_keycloak
+      - POSTGRESQL_DATABASE=bitnami_keycloak
+    volumes:
+      - 'postgresql_data:/bitnami/postgresql'
+
+  keycloak:
+    image: docker.io/bitnami/keycloak:22
+    container_name: keycloak
+    depends_on:
+      - postgresql
+    ports:
+      - 8080:8080
+    volumes:
+      - ../eds-plugin-corporate/target/eds-plugin-corporate-1.0.0.jar:/opt/bitnami/keycloak/providers/keycloak-eds-login.jar
+      - ../eds-plugin-corporate/target/eds-plugin-corporate-1.0.0.jar:/opt/bitnami/keycloak/providers/eds-plugin-corporate.jar
+      - ../eds-plugin-individual/target/eds-plugin-individual-1.0.0.jar:/opt/bitnami/keycloak/providers/eds-plugin-individual.jar
+      - ../libs/:/opt/bitnami/keycloak/providers/
+      - ../random-revoke-api-impl/target/random-revoke-api-impl-1.0.0.jar:/opt/bitnami/keycloak/providers/random-revoke-api-impl.jar
+    environment:
+      KC_LOG_LEVEL: INFO
+      JAVA_OPTS_APPEND: -DINDIVIDUAL_CERT_VERIFIER_CLASS_NAME=kz.core247.example.RandomCommonCertificateVerifier
+networks:
+  testnet: {}
+
+volumes:
+  postgresql_data:
+    driver: local
+  
+  

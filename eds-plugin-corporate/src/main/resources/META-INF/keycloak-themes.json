@@ -1,0 +1,6 @@
+{
+    "themes": [{
+        "name" : "Otp-Login",
+        "types": [ "login"]
+    }]
+}

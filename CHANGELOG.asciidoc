@@ -1,0 +1,19 @@
+=== Unreleased
+
+[float]
+===== Bug fixes
+
+[float]
+===== Features
+
+[[release-notes-1.x]]
+=== Keycloak EDS plugin version 1.x
+
+[[release-notes-1.0.0]]
+==== 1.0.0 - 2024/05/04
+
+[float]
+===== Features
+* Provides `org.keycloak.authentication.Authenticator` implementation for individual and corporate certificates
+* Provides `kalkan-lib` artifact
+* Provides `revoke-api` and example implementation `random-revoke-api-impl`.
