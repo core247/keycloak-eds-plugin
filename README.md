@@ -15,6 +15,19 @@ outstanding security and flexibility for the users and administrators of your sy
 It was developed and tested against **Keycloak 22.0.4**. 
 Compatibility with other versions of Keycloak is not guaranteed.
 
+## License
+This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENSE) file for details.
+
+## Getting Help
+
+If you find a bug or an issue, please
+
+[report an issue](https://github.com/core247/keycloak-eds-plugin/issues/new) on the keycloak eds plugin repository
+
+## Contributing
+
+See the [contributing documentation](CONTRIBUTING.md)
+
 ## What does plugin provides:
 - Implement secondary sign-in step in the browser flow.
 - Validate and perform revocation checks on certificates.
